@@ -3,6 +3,7 @@ package contributors
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import retrofit2.Response
+import java.time.LocalDateTime.now
 
 val log: Logger = LoggerFactory.getLogger("Contributors")
 
@@ -26,6 +27,6 @@ fun logUsers(repo: Repo, response: Response<List<User>>) {
         log.error("Failed loading contributors for ${repo.name} with response '${response.code()}: ${response.message()}'")
     }
     else {
-        log.info("${repo.name}: loaded ${users.size} contributors")
+        log.info("${now()} ${repo.name}: loaded ${users.size} contributors")
     }
 }
